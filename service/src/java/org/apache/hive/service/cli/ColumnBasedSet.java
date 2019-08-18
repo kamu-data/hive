@@ -47,8 +47,10 @@ public class ColumnBasedSet implements RowSet {
   public ColumnBasedSet(TRowSet tRowSet) {
     types = null;
     columns = new ArrayList<Column>();
-    for (TColumn tvalue : tRowSet.getColumns()) {
-      columns.add(new Column(tvalue));
+    if (tRowSet.getColumns() != null) {
+      for (TColumn tvalue : tRowSet.getColumns()) {
+        columns.add(new Column(tvalue));
+      }
     }
     startOffset = tRowSet.getStartRowOffset();
   }
